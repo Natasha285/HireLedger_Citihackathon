@@ -1,0 +1,5 @@
+/* Jobs / Application Manager page */
+@layer pages.jobs {
+.jobs-page { display:flex; flex-direction:column; gap:1.25rem; }
+.job-grid { --min:320px; display:grid; grid-template-columns:repeat(auto-fill,minmax(var(--min),1fr)); gap:1rem; margin-top:.5rem; }
+}

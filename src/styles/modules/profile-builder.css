@@ -1,0 +1,4 @@
+/* Profile Builder */
+@layer pages.profileBuilder {
+.pb-layout { display:flex; flex-direction:column; gap:1.25rem; }
+}

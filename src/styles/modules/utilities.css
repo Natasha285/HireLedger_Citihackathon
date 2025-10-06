@@ -1,0 +1,10 @@
+/* Utility classes */
+@layer utilities {
+.flex { display:flex; } .col { display:flex; flex-direction:column; } .row { display:flex; flex-direction:row; }
+.gap-xs{gap:.25rem;} .gap-sm{gap:.5rem;} .gap{gap:.75rem;} .gap-lg{gap:1rem;}
+.text-dim{color:var(--color-text-muted);} .w-full{width:100%;}
+.mt-0{margin-top:0;} .mb-0{margin-bottom:0;}
+.rounded-md{border-radius:var(--radius-md);} .rounded-lg{border-radius:var(--radius-lg);} 
+.shadow-sm{box-shadow:var(--shadow-sm);} .shadow-lg{box-shadow:var(--shadow-lg);} 
+.hidden{display:none !important;}
+}

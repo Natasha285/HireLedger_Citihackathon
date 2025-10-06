@@ -1,0 +1,24 @@
+/* Student Dashboard specific */
+@layer pages.student {
+.student-dash-grid { width:100%; display:grid; gap:1.35rem; align-items:start; grid-template-columns:minmax(0,1fr) 340px; }
+@media (max-width:1180px){ .student-dash-grid { grid-template-columns:1fr; } }
+.hero { display:flex; flex-direction:column; gap:.9rem; }
+.progress-bar { height:10px; background:var(--color-border); border-radius:20px; overflow:hidden; position:relative; box-shadow:inset 0 1px 2px rgba(0,0,0,0.05); }
+.progress-bar span { display:block; height:100%; background:var(--gradient-brand); border-radius:20px; transition:width 360ms cubic-bezier(.4,.7,.4,1); }
+.job-feed .job-grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); }
+.job-card { display:flex; flex-direction:column; gap:.6rem; padding:1rem 1rem 1.05rem; border:1px solid var(--color-border); border-radius:var(--radius-lg); background:var(--color-surface); box-shadow:var(--shadow-sm); transition:box-shadow var(--transition-base), transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast); }
+.job-card:hover { box-shadow:var(--shadow-md); transform:translateY(-3px); border-color:var(--color-border-strong); }
+.job-head { display:flex; align-items:center; gap:.6rem; }
+.job-tags { display:flex; flex-wrap:wrap; gap:.35rem; }
+.status-tracker .app-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.75rem; }
+.app-row { display:flex; flex-direction:column; gap:.35rem; padding:.65rem .75rem; border:1px solid var(--color-border); border-radius:var(--radius-md); background:var(--color-surface); }
+.stage-line { list-style:none; margin:.2rem 0 0; padding:0; display:flex; gap:.35rem; flex-wrap:wrap; font-size:.55rem; letter-spacing:.5px; }
+.stage-line .stage { padding:.25rem .45rem; border-radius:12px; background:var(--color-border); text-transform:uppercase; font-weight:600; }
+.stage-line .stage.done { background:var(--color-primary); color:#fff; }
+.stage-line .stage.current { background:var(--color-primary-hover); color:#fff; }
+.notifications { max-height:600px; overflow:auto; display:flex; flex-direction:column; gap:.75rem; }
+.notif-list { list-style:none; margin:0; padding:0; display:grid; gap:.55rem; }
+.notif { font-size:.7rem; line-height:1.38; background:var(--color-surface); border:1px solid var(--color-border); padding:.6rem .7rem; border-radius:var(--radius-md); box-shadow:var(--shadow-sm); position:relative; overflow:hidden; }
+.notif::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent); opacity:0; transition:opacity var(--transition-fast); }
+.notif:hover::after { opacity:1; }
+}

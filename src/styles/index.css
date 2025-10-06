@@ -1,0 +1,11 @@
+/* Aggregated modular stylesheet */
+@import './modules/tokens.css';
+@import './modules/base.css';
+@import './modules/layout.css';
+@import './modules/components.css';
+@import './modules/utilities.css';
+@import './modules/student-dashboard.css';
+@import './modules/jobs.css';
+@import './modules/assessment.css';
+@import './modules/credentials.css';
+@import './modules/profile-builder.css';
