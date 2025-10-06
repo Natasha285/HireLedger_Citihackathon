@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import '../styles/pages/SkillAssessment.css';
 
 /*
   SkillAssessment Page

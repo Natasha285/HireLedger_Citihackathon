@@ -1,0 +1,17 @@
+/* AdminAudit.css */
+.admin-audit-page { display:flex; flex-direction:column; gap:1.25rem; }
+.admin-audit-page .admin-head { display:flex; flex-direction:column; gap:.9rem; padding:1.15rem 1.25rem 1.25rem; border-radius:18px; }
+.admin-audit-page .admin-head h1 { margin:0; font-size:1.35rem; font-weight:600; }
+.admin-table { width:100%; border-collapse:collapse; font-size:.78rem; }
+.admin-table thead th { text-align:left; font-size:.62rem; letter-spacing:.05em; text-transform:uppercase; padding:.55rem .6rem; background:linear-gradient(to bottom,#f9fafb,#f1f5f9); border-bottom:1px solid var(--border-subtle,#e5e7eb); font-weight:600; color:var(--text-tertiary,#64748b); }
+.admin-table tbody td { padding:.55rem .6rem; border-bottom:1px solid var(--border-subtle,#eef2f6); }
+.admin-table tbody tr:last-child td { border-bottom:none; }
+.admin-table .empty { text-align:center; padding:2rem 0; color:var(--text-tertiary,#64748b); }
+@media (max-width: 780px){
+  .admin-table thead { display:none; }
+  .admin-table, .admin-table tbody, .admin-table tr, .admin-table td { display:block; width:100%; }
+  .admin-table tbody tr { background:#fff; margin-bottom:.85rem; border:1px solid var(--border-subtle,#e5e7eb); border-radius:14px; overflow:hidden; }
+  .admin-table tbody td { border-bottom:1px solid var(--border-subtle,#eef2f6); position:relative; padding-left:6.8rem; }
+  .admin-table tbody td:last-child { border-bottom:none; }
+  .admin-table tbody td::before { content: attr(data-label); position:absolute; left:0; top:0; bottom:0; width:6.1rem; background:#f8fafc; font-size:.55rem; letter-spacing:.05em; text-transform:uppercase; font-weight:600; display:flex; align-items:center; padding:.55rem .5rem; color:var(--text-tertiary,#64748b); border-right:1px solid var(--border-subtle,#e2e8f0); }
+}

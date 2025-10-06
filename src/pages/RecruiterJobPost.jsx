@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/pages/RecruiterJobPost.css';
 
 /*
   RecruiterJobPost
@@ -54,16 +55,16 @@ export default function RecruiterJobPost() {
   }
 
   return (
-    <div className="job-post-page">
+    <div className="recruiter-jobpost-page">
       <header className="surface form-head">
         <h1>Post a Job</h1>
         <p className="muted small">Fill required information to create a posting.</p>
       </header>
-      <form onSubmit={submit} className="job-form" aria-describedby="jobFormHelp">
+      <form onSubmit={submit} className="recruiter-jobpost-form" aria-describedby="jobFormHelp">
         <div id="jobFormHelp" className="visually-hidden">All fields are mock only; no data is persisted.</div>
-        <section className="form-section">
-          <h2 className="sec-title">Basics</h2>
-          <div className="field-grid">
+        <section className="recruiter-jobpost-section">
+          <h2>Basics</h2>
+          <div className="recruiter-field-grid">
             <label className="field">Title
               <input value={form.title} onChange={e=>update('title', e.target.value)} required />
             </label>
@@ -92,8 +93,8 @@ export default function RecruiterJobPost() {
           </div>
         </section>
 
-        <section className="form-section">
-          <h2 className="sec-title">Description</h2>
+        <section className="recruiter-jobpost-section">
+          <h2>Description</h2>
           <label className="field">Role Summary
             <textarea rows={4} value={form.description} onChange={e=>update('description', e.target.value)} />
           </label>
@@ -102,8 +103,8 @@ export default function RecruiterJobPost() {
           </label>
         </section>
 
-        <section className="form-section">
-          <h2 className="sec-title">Skills / Tags</h2>
+        <section className="recruiter-jobpost-section">
+          <h2>Skills / Tags</h2>
           <form onSubmit={addSkill} className="inline-form" aria-label="Add skill tag">
             <input placeholder="Add a skill" value={form.tagsInput} onChange={e=>update('tagsInput', e.target.value)} />
             <button onClick={addSkill} className="btn-secondary" type="button">Add</button>
@@ -114,7 +115,7 @@ export default function RecruiterJobPost() {
           </div>
         </section>
 
-        <div className="form-footer row gap-sm">
+  <div className="recruiter-jobpost-actions">
           <button type="submit" className="btn-primary">Save Draft</button>
           <button type="button" onClick={()=>setForm(INITIAL)} className="btn-ghost">Reset</button>
           {status && <span className={"status-msg " + status.type}>{status.msg}</span>}

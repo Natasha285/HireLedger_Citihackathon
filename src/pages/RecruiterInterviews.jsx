@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/pages/RecruiterInterviews.css';
 
 /*
   RecruiterInterviews
@@ -43,7 +44,7 @@ export default function RecruiterInterviews() {
   }
 
   return (
-    <div className="interviews-page">
+    <div className="recruiter-interviews-grid">
       <header className="surface inter-head">
         <h1>Interview Scheduler</h1>
         <div className="row gap-sm">
@@ -57,16 +58,16 @@ export default function RecruiterInterviews() {
       </header>
 
       {view === 'week' && (
-        <div className="calendar-grid" role="grid" aria-label="Week schedule">
+        <div className="recruiter-calendar-wrapper" role="grid" aria-label="Week schedule">
           <div className="cal-head" role="row">
             <div className="time-col" />
             {DAYS.map((d,i) => <div key={d} role="columnheader" className="day-head" onDragOver={e=>e.preventDefault()} onDrop={()=>onDragEnd(i+1)}>{d}</div>)}
           </div>
-          <div className="cal-body">
+          <div className="recruiter-calendar-grid">
             {slots.map(slot => (
               <div
                 key={slot.id}
-                className={"slot" + (draggingId===slot.id ? ' dragging' : '')}
+                className={"recruiter-calendar-day" + (draggingId===slot.id ? ' dragging' : '')}
                 draggable
                 aria-grabbed={draggingId===slot.id}
                 onDragStart={()=>onDragStart(slot.id)}
@@ -94,13 +95,13 @@ export default function RecruiterInterviews() {
       )}
 
       {showModal && (
-        <div className="modal-overlay" role="dialog" aria-modal="true" aria-label="Create interview slot">
-          <div className="modal">
-            <header className="modal-head">
+        <div className="recruiter-message-modal" role="dialog" aria-modal="true" aria-label="Create interview slot">
+          <div className="recruiter-message-dialog">
+            <header>
               <h2>New Interview</h2>
               <button className="icon-btn" aria-label="Close" onClick={()=>setShowModal(false)}>✕</button>
             </header>
-            <form onSubmit={createSlot} className="modal-body col gap-sm">
+            <form onSubmit={createSlot} className="col gap-sm">
               <label className="field">Title
                 <input required value={newSlot.title} onChange={e=>setNewSlot(s=>({...s,title:e.target.value}))} />
               </label>
@@ -118,7 +119,7 @@ export default function RecruiterInterviews() {
                   <input type="time" value={newSlot.end} onChange={e=>setNewSlot(s=>({...s,end:e.target.value}))} />
                 </label>
               </div>
-              <footer className="modal-foot">
+              <footer>
                 <button type="submit" className="btn-primary">Create</button>
                 <button type="button" className="btn-ghost" onClick={()=>setShowModal(false)}>Cancel</button>
               </footer>

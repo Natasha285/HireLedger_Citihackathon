@@ -143,3 +143,71 @@ Replace files in `/icons` keeping filenames & sizes. Update `manifest.json` if a
 
 ## License
 MIT (add a LICENSE file if distribution is intended)
+
+## CSS Architecture (Modular Redesign 2025-10)
+
+The styling system was refactored from a single monolithic `globals.css` into a layered, modular architecture for clearer ownership, faster iteration, and lower regression risk.
+
+### Layer Overview
+1. Core Tokens: `styles/modules/tokens.css` – Design primitives (color palette, semantic roles, spacing, radii, shadows, motion curves, typography). Includes compatibility aliases for legacy variable names during transition.
+2. Base: `styles/modules/base.css` – Resets, element defaults, typography scaling, dark mode root variables.
+3. Layout: `styles/modules/layout.css` – Global structural grid (sidebar + main), responsive breakpoints, scroll behaviors.
+4. Components: `styles/modules/components.css` – Reusable design system atoms/molecules (buttons, cards/surfaces, badges, forms, progress, tabs, chips, etc.). No page‑specific selectors.
+5. Utilities: `styles/modules/utilities.css` – Small single‑responsibility classes (spacing stacks, flex/grid helpers, text truncation, visually-hidden, shadow helpers).
+6. Features: `styles/features/*.css` – Cross‑page interactive/behavioral UI (toasts, command palette, skeleton loaders, banners, modals, splash screen). Imported globally in `index.css`.
+7. Pages: `styles/pages/*.css` – Page‑scoped layout & aesthetic rules (grid templates, KPI card variants, table formatting). Imported only by the corresponding React page component.
+
+### Import Flow
+Global bundle (`globals.css` → `index.css`) now only includes core + feature layers:
+```
+@import './modules/tokens.css';
+@import './modules/base.css';
+@import './modules/layout.css';
+@import './modules/components.css';
+@import './modules/utilities.css';
+/* Feature layers */
+@import './features/toasts.css';
+@import './features/command-palette.css';
+@import './features/skeletons.css';
+@import './features/banners.css';
+@import './features/modals.css';
+@import './features/splash.css';
+```
+Individual page components import their own stylesheet, e.g.:
+```
+// in pages/RecruiterDashboard.jsx
+import '../styles/pages/RecruiterDashboard.css';
+```
+
+### Conventions
+- Naming: `.role-entity-section` or `.recruiter-analytics-card`; avoid deeply nested selectors (>3 levels) to maintain clarity.
+- Page root: Each page file defines a top-level wrapper class (e.g., `.recruiter-applicants-layout`) used as a scoping boundary.
+- No overrides: Page CSS must not modify core component class definitions directly; instead extend via wrapper context or new semantic classes.
+- Dark mode: Prefer using semantic CSS vars (e.g., `var(--surface-elevated)`) so themes propagate automatically.
+- Responsive: Use minmax auto-fill grids and clamp typography where possible; only introduce media queries for breakpoint-specific structural shifts.
+
+### Adding a New Page
+1. Create `styles/pages/NewPageName.css` with a unique root wrapper class.
+2. Limit selectors to that root scope + descendants.
+3. Import the file at top of the new page component.
+4. Reuse utilities/components before adding bespoke rules.
+
+### Migration Notes
+- Legacy module page imports (`modules/student-dashboard.css`, etc.) were fully removed from `index.css`.
+- Compatibility CSS variables retained in `tokens.css` (`--accent-*`, `--elevate-*`) to avoid breaking earlier component references. Plan: remove after audit & rename to semantic equivalents.
+
+### Future Hardening
+- Introduce linting (Stylelint) with a layering rule set (e.g., stylelint-order) to enforce import order.
+- Consider CSS logical properties for RTL readiness.
+- Evaluate extracting components to CSS Modules or a zero-runtime utility generator if scale increases.
+
+### Performance
+- Page-specific CSS is only parsed on navigation when using code splitting (future enhancement once routes are lazily loaded).
+- Shared feature + core layers remain in the initial render path for consistent UX.
+
+### Testing
+- Visual regression: integrate Playwright + per-page screenshot baselines.
+- Accessibility audit: axe-core run per page wrapper root.
+
+---
+Refactor completed: 2025-10-07.

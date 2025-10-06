@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import '../styles/pages/RecruiterApplicants.css';
 
 /*
   RecruiterApplicants
@@ -64,13 +65,13 @@ export default function RecruiterApplicants() {
   }
 
   return (
-    <div className="applicants-page">
+    <div className="recruiter-applicants-layout">
       <header className="surface applicants-head">
         <h1>Applicants</h1>
         <p className="muted small">Filter and manage candidates (static data).</p>
       </header>
 
-      <div className="filters-row">
+      <div className="recruiter-filters-bar">
         <div className="filter-group">
           <label>Skill
             <select value={skill} onChange={e=>{ setPage(1); setSkill(e.target.value); }}>
@@ -96,8 +97,8 @@ export default function RecruiterApplicants() {
         </div>
       </div>
 
-      <div className="table-wrap" role="region" aria-label="Applicants table">
-        <table className="app-table">
+      <div className="recruiter-applicants-table-wrapper" role="region" aria-label="Applicants table">
+        <table className="recruiter-applicants-table">
           <thead>
             <tr>
               <th><input type="checkbox" aria-label="Select all" onChange={toggleAll} checked={pageItems.length>0 && pageItems.every(i=>selected.includes(i.id))} /></th>
@@ -128,20 +129,20 @@ export default function RecruiterApplicants() {
         </table>
       </div>
 
-      <div className="pagination" role="navigation" aria-label="Pagination">
+  <div className="pagination" role="navigation" aria-label="Pagination">
         <button disabled={page===1} onClick={()=>setPage(p=>p-1)} className="btn-ghost">Prev</button>
         <span className="page-status">Page {page} / {totalPages || 1}</span>
         <button disabled={page===totalPages || totalPages===0} onClick={()=>setPage(p=>p+1)} className="btn-ghost">Next</button>
       </div>
 
       {showModal && (
-        <div className="modal-overlay" role="dialog" aria-modal="true" aria-label="Bulk messaging">
-          <div className="modal">
-            <header className="modal-head">
+        <div className="recruiter-message-modal" role="dialog" aria-modal="true" aria-label="Bulk messaging">
+          <div className="recruiter-message-dialog">
+            <header>
               <h2>Bulk Message ({selected.length})</h2>
               <button onClick={()=>setShowModal(false)} className="icon-btn" aria-label="Close">✕</button>
             </header>
-            <div className="modal-body">
+            <div>
               <div
                 className="rte-placeholder"
                 contentEditable
@@ -152,7 +153,7 @@ export default function RecruiterApplicants() {
               />
               <p className="muted small">Rich text editor placeholder. TODO: integrate real editor + template variables.</p>
             </div>
-            <footer className="modal-foot">
+            <footer>
               <button className="btn-primary" onClick={sendBulk}>Send</button>
               <button className="btn-ghost" onClick={()=>setShowModal(false)}>Cancel</button>
             </footer>

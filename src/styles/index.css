@@ -4,8 +4,11 @@
 @import './modules/layout.css';
 @import './modules/components.css';
 @import './modules/utilities.css';
-@import './modules/student-dashboard.css';
-@import './modules/jobs.css';
-@import './modules/assessment.css';
-@import './modules/credentials.css';
-@import './modules/profile-builder.css';
+
+/* Shared feature layers (page-specific CSS now imported per component) */
+@import './features/toasts.css';
+@import './features/command-palette.css';
+@import './features/skeletons.css';
+@import './features/banners.css';
+@import './features/modals.css';
+@import './features/splash.css';

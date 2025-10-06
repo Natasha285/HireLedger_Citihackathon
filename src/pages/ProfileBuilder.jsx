@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/pages/ProfileBuilder.css';
 import { ProfileBuilderProvider, useProfileBuilder, steps } from '../context/ProfileBuilderContext.jsx';
 import PersonalStep from '../components/profile/PersonalStep.jsx';
 import EducationStep from '../components/profile/EducationStep.jsx';

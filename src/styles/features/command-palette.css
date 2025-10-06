@@ -1,0 +1,9 @@
+/* Global command/search palette */
+.cmd-overlay { position:fixed; inset:0; background:rgba(15,23,42,.55); backdrop-filter:blur(4px); display:flex; justify-content:center; padding:4rem 1rem 2rem; z-index:100; }
+.cmd-dialog { width:100%; max-width:640px; background: var(--surface-elevated,#fff); border:1px solid var(--border-subtle,#e2e8f0); border-radius:18px; box-shadow:0 20px 50px -12px rgba(0,0,0,.35),0 8px 28px -6px rgba(0,0,0,.18); display:flex; flex-direction:column; overflow:hidden; }
+.cmd-input-wrap { padding:.75rem .9rem; border-bottom:1px solid var(--border-subtle,#e2e8f0); }
+.cmd-input-wrap input { width:100%; font:inherit; border:0; outline:0; background:transparent; font-size:.95rem; }
+.cmd-results { max-height:340px; overflow:auto; padding:.4rem 0; }
+.cmd-item { padding:.55rem .95rem; font-size:.8rem; display:flex; justify-content:space-between; gap:1rem; cursor:pointer; line-height:1.2; }
+.cmd-item:hover, .cmd-item.active { background:#f1f5f9; }
+.cmd-item kbd { background:#f1f5f9; border:1px solid var(--border-subtle,#dbe0e6); border-radius:6px; padding:.2rem .4rem .25rem; font-size:.6rem; letter-spacing:.05em; }

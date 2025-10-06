@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/pages/RecruiterAnalytics.css';
 
 /*
   RecruiterAnalytics
@@ -86,12 +87,12 @@ function StatusBadge({ status }) {
 
 export default function RecruiterAnalytics() {
   return (
-    <div className="analytics-page">
+    <div className="recruiter-analytics-layout">
       <header className="surface analytics-head">
         <h1>Analytics</h1>
         <p className="muted small">Static visualisation of performance & verification.</p>
       </header>
-      <section className="surface charts-wrap">
+      <section className="recruiter-analytics-grid">
         <div className="chart-block">
           <h2 className="chart-title">Applications per Job</h2>
           <BarChart data={JOB_PERF} />
@@ -107,7 +108,7 @@ export default function RecruiterAnalytics() {
         </div>
       </section>
 
-      <section className="surface verif-section">
+      <section className="recruiter-analytics-card">
         <h2 className="h-sm">Blockchain Verification</h2>
         <table className="verif-table" aria-label="Verification statuses">
           <thead>

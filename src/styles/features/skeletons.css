@@ -1,0 +1,5 @@
+/* Skeleton loading placeholders */
+.skel { position:relative; overflow:hidden; background: linear-gradient(90deg,#f1f5f9 0%,#f8fafc 40%,#f8fafc 60%,#f1f5f9 100%); background-size:200% 100%; animation: skel 1.6s linear infinite; border-radius:8px; }
+@keyframes skel { from { background-position:200% 0; } to { background-position:-200% 0; } }
+.skel.text { height: .85rem; margin:.5rem 0; }
+.skel.circle { border-radius:50%; }

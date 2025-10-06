@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import '../styles/pages/StudentDashboard.css';
 import { useAuth } from '../context/AuthContext.jsx';
 
 export default function StudentDashboard() {

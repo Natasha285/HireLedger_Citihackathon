@@ -1,0 +1,38 @@
+/* RecruiterJobPost.css */
+.recruiter-jobpost-form {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.recruiter-jobpost-section {
+  background: var(--surface-elevated,#fff);
+  border: 1px solid var(--border-subtle,#e5e7eb);
+  border-radius: 16px;
+  padding: 1.5rem 1.6rem 1.65rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05),0 6px 22px -6px rgba(0,0,0,.06);
+}
+.recruiter-jobpost-section h2 {
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin: 0 0 1.1rem;
+  color: var(--text-tertiary,#6b7280);
+}
+.recruiter-field-grid {
+  display: grid;
+  gap: 1rem 1.25rem;
+  grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+}
+.recruiter-jobpost-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .75rem;
+  padding-top: .25rem;
+}
+@media (max-width: 880px) {
+  .recruiter-field-grid { grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); }
+  .recruiter-jobpost-section { padding: 1.25rem 1.25rem 1.35rem; }
+}

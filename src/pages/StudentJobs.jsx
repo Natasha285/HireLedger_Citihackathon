@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import '../styles/pages/StudentJobs.css';
 
 /*
   Student Jobs & Application Manager Page

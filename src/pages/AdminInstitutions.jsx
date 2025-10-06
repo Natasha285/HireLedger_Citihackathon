@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import '../styles/pages/AdminInstitutions.css';
 
 /*
   AdminInstitutions Page

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/pages/RecruiterDashboard.css';
 
 /*
   RecruiterDashboard
@@ -17,17 +18,17 @@ const metrics = [
 
 export default function RecruiterDashboard() {
   return (
-    <div className="recruiter-dash">
+    <div className="recruiter-dashboard">
       <header className="surface dash-head">
         <h1>Recruiter Dashboard</h1>
         <p className="muted small">High-level overview (static mock data)</p>
       </header>
-      <section className="kpi-grid" aria-label="Key performance indicators">
+      <section className="recruiter-dashboard" aria-label="Key performance indicators">
         {metrics.map(m => (
-          <div key={m.key} className="kpi-card" role="group" aria-label={m.label}>
-            <div className="kpi-label">{m.label}</div>
-            <div className="kpi-value">{m.value}</div>
-            <div className="kpi-delta">{m.delta}</div>
+          <div key={m.key} className="recruiter-kpi-card" role="group" aria-label={m.label}>
+            <h3>{m.label}</h3>
+            <div className="recruiter-kpi-metric">{m.value}</div>
+            <div className="recruiter-kpi-trend">{m.delta}</div>
           </div>
         ))}
       </section>
