@@ -115,7 +115,7 @@ export default function RecruiterJobPost() {
           </div>
         </section>
 
-  <div className="recruiter-jobpost-actions">
+        <div className="recruiter-jobpost-actions">
           <button type="submit" className="btn-primary">Save Draft</button>
           <button type="button" onClick={()=>setForm(INITIAL)} className="btn-ghost">Reset</button>
           {status && <span className={"status-msg " + status.type}>{status.msg}</span>}

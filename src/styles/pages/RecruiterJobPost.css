@@ -1,38 +1,162 @@
 /* RecruiterJobPost.css */
-.recruiter-jobpost-form {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.recruiter-jobpost-page {
+  display:flex;
+  flex-direction:column;
+  gap:1.6rem;
+  max-width:var(--content-max-width, 1200px);
+  margin:0 auto;
+  width:100%;
 }
+
+.form-head {
+  display:flex;
+  flex-direction:column;
+  gap:.6rem;
+  padding:1.75rem clamp(1.6rem,2.6vw,2.3rem);
+  border-radius:var(--radius-xl);
+  border:1px solid color-mix(in srgb,var(--color-border) 65%, transparent);
+  box-shadow:0 24px 48px -34px rgba(15,23,42,0.22);
+}
+.form-head h1 { margin:0; font-size:clamp(1.85rem,1.35rem + 1vw,2.3rem); font-weight:700; }
+.form-head .muted { font-size:.95rem; max-width:540px; }
+
+.recruiter-jobpost-form {
+  max-width:960px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:1.8rem;
+}
+
 .recruiter-jobpost-section {
-  background: var(--surface-elevated,#fff);
-  border: 1px solid var(--border-subtle,#e5e7eb);
-  border-radius: 16px;
-  padding: 1.5rem 1.6rem 1.65rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,.05),0 6px 22px -6px rgba(0,0,0,.06);
+  display:flex;
+  flex-direction:column;
+  gap:1.25rem;
+  padding:1.85rem clamp(1.45rem,2.4vw,1.95rem);
+  border-radius:var(--radius-xl);
+  border:1px solid color-mix(in srgb,var(--color-border) 70%, transparent);
+  background:linear-gradient(150deg,rgba(15,23,42,0.05),rgba(59,130,246,0.05));
+  box-shadow:0 26px 52px -38px rgba(15,23,42,0.28);
 }
 .recruiter-jobpost-section h2 {
-  font-size: .8rem;
-  font-weight: 600;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  margin: 0 0 1.1rem;
-  color: var(--text-tertiary,#6b7280);
+  margin:0;
+  font-size:.78rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:color-mix(in srgb,var(--color-text-muted) 80%, #fff 20%);
 }
+
 .recruiter-field-grid {
-  display: grid;
-  gap: 1rem 1.25rem;
-  grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+  display:grid;
+  gap:1.2rem 1.4rem;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 }
+
+.recruiter-jobpost-section .field {
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  font-size:.85rem;
+  font-weight:600;
+  letter-spacing:.04em;
+}
+.recruiter-jobpost-section .field input,
+.recruiter-jobpost-section .field select,
+.recruiter-jobpost-section .field textarea {
+  padding:.8rem 1rem;
+  border-radius:var(--radius-lg);
+  border:1px solid color-mix(in srgb,var(--color-border) 70%, transparent);
+  background:var(--color-surface);
+  font:inherit;
+  color:var(--color-text);
+  transition:border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+.recruiter-jobpost-section .field textarea { min-height:140px; resize:vertical; }
+.recruiter-jobpost-section .field input:focus,
+.recruiter-jobpost-section .field select:focus,
+.recruiter-jobpost-section .field textarea:focus {
+  border-color:color-mix(in srgb,var(--color-primary) 42%, var(--color-border));
+  box-shadow:0 0 0 4px rgba(59,130,246,0.16);
+  outline:none;
+  transform:translateY(-1px);
+}
+
+.salary-range span { text-transform:uppercase; font-size:.72rem; letter-spacing:.18em; color:var(--color-text-muted); }
+.salary-range .row { display:flex; gap:.75rem; flex-wrap:wrap; }
+.salary-range input { flex:1 1 140px; }
+.salary-range select { flex:0 0 120px; }
+
+.inline-form {
+  display:flex;
+  gap:.75rem;
+  flex-wrap:wrap;
+  padding:.35rem;
+  border-radius:var(--radius-pill);
+  background:var(--color-surface);
+  border:1px solid color-mix(in srgb,var(--color-border) 70%, transparent);
+}
+.inline-form input {
+  flex:1 1 220px;
+  padding:.75rem 1rem;
+  border:none;
+  background:transparent;
+  font:inherit;
+  color:var(--color-heading);
+}
+.inline-form input:focus { outline:none; }
+.inline-form .btn-secondary {
+  border-radius:999px;
+  padding:.65rem 1.4rem;
+  font-weight:600;
+  box-shadow:0 16px 40px -22px rgba(59,130,246,0.5);
+}
+
+.skill-badges {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem;
+  min-height:42px;
+}
+.tag-removable {
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.5rem 1rem;
+  border-radius:999px;
+  background:rgba(59,130,246,0.16);
+  color:var(--color-primary);
+  font-size:.82rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:background var(--transition-fast), transform var(--transition-fast);
+}
+.tag-removable:hover { background:rgba(59,130,246,0.26); transform:translateY(-1px); }
+
 .recruiter-jobpost-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: .75rem;
-  padding-top: .25rem;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+  gap:.9rem;
+  padding:1.1rem clamp(1.3rem,2.6vw,1.85rem) 0;
+  border-top:1px solid color-mix(in srgb,var(--color-border) 70%, transparent);
 }
-@media (max-width: 880px) {
-  .recruiter-field-grid { grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); }
-  .recruiter-jobpost-section { padding: 1.25rem 1.25rem 1.35rem; }
+.recruiter-jobpost-actions .btn-primary { border-radius:999px; padding:.7rem 1.6rem; box-shadow:0 20px 44px -24px rgba(59,130,246,0.55); }
+.recruiter-jobpost-actions .btn-ghost { border-radius:999px; padding:.65rem 1.4rem; border:1px solid color-mix(in srgb,var(--color-border) 70%, transparent); background:var(--color-surface); }
+.recruiter-jobpost-actions .btn-ghost:hover { background:color-mix(in srgb,var(--color-primary) 10%, var(--color-surface)); }
+.status-msg { font-weight:600; letter-spacing:.04em; }
+.status-msg.success { color:var(--color-success, #047857); }
+.status-msg.error { color:var(--color-danger, #dc2626); }
+
+@media (max-width:960px){
+  .recruiter-jobpost-form { gap:1.5rem; }
+  .recruiter-field-grid { grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+}
+
+@media (max-width:640px){
+  .form-head { padding:1.6rem 1.4rem; }
+  .recruiter-jobpost-section { padding:1.6rem 1.25rem; }
+  .recruiter-jobpost-actions { justify-content:flex-start; }
+  .recruiter-jobpost-actions .btn-primary { width:100%; text-align:center; }
 }

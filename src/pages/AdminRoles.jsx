@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import '../styles/pages/AdminRoles.css';
+import { AdminConsole } from '../components/layout/AdminConsole.jsx';
 
 /*
   AdminRoles Page
@@ -30,53 +31,81 @@ export default function AdminRoles() {
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
   const pageItems = filtered.slice((page-1)*PAGE_SIZE, page*PAGE_SIZE);
 
+  const metrics = useMemo(() => {
+    const pending = USERS.filter(u => u.pending).length;
+    const recruiters = USERS.filter(u => u.role === 'recruiter').length;
+    const students = USERS.filter(u => u.role === 'student').length;
+    return [
+      { label: 'Total Users', value: USERS.length, delta: '+12 new this month' },
+      { label: 'Pending Approvals', value: pending, delta: 'Resolve within 24h', tone: pending > 0 ? 'alert' : undefined },
+      { label: 'Active Recruiters', value: recruiters, delta: '+3 added this week', tone: 'success' },
+      { label: 'Active Students', value: students, delta: '+9 onboarding' }
+    ];
+  }, []);
+
+  const toolbar = (
+    <>
+      <label className="small">Filter Role
+        <select value={filterRole} onChange={e=>{ setPage(1); setFilterRole(e.target.value); }}>
+          <option value="">All</option>
+          <option value="student">Students</option>
+          <option value="recruiter">Recruiters</option>
+        </select>
+      </label>
+      <button type="button" className="btn-secondary" onClick={()=>alert('Mock invite user')}>Invite User</button>
+    </>
+  );
+
   function approve(u) { alert('Mock approve ' + u.id); /* TODO(API) */ }
   function reject(u) { alert('Mock reject ' + u.id); /* TODO(API) */ }
   function assign(u, role) { alert(`Mock assign ${role} to ${u.id}`); /* TODO(API) */ }
   function revoke(u) { alert('Mock revoke roles for ' + u.id); /* TODO(API) */ }
 
   return (
-    <div className="admin-roles-page">
-      <header className="surface admin-head">
-        <h1>Role Management</h1>
-        <div className="row gap-sm">
-          <label className="small">Filter Role
-            <select value={filterRole} onChange={e=>{ setPage(1); setFilterRole(e.target.value); }}>
-              <option value="">All</option>
-              <option value="student">Students</option>
-              <option value="recruiter">Recruiters</option>
-            </select>
-          </label>
-        </div>
-      </header>
-
-      <div className="table-wrap" role="region" aria-label="User roles table">
+    <AdminConsole
+      title="Role Management"
+      description="Assign permissions, approve access requests, and monitor critical changes across the talent marketplace."
+      metrics={metrics}
+      toolbar={toolbar}
+    >
+      <section className="admin-card" role="region" aria-label="User roles table">
         <table className="admin-table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
             {pageItems.map(u => (
-              <tr key={u.id} className={u.pending ? 'pending' : ''}>
-                <td>{u.name}</td>
-                <td>{u.email}</td>
-                <td>{u.role}</td>
-                <td>{u.pending ? 'Pending ' + u.requestedRole : 'Active'}</td>
-                <td>
+              <tr key={u.id} className={u.pending ? 'is-pending' : ''}>
+                <td data-label="Name">
+                  <div className="cell-primary">{u.name}</div>
+                </td>
+                <td data-label="Email">
+                  <div className="cell-secondary">{u.email}</div>
+                </td>
+                <td data-label="Role">
+                  <span className="badge badge-neutral">{u.role}</span>
+                </td>
+                <td data-label="Status">
+                  {u.pending ? (
+                    <span className="badge badge-warning">Pending {u.requestedRole}</span>
+                  ) : (
+                    <span className="badge badge-success">Active</span>
+                  )}
+                </td>
+                <td data-label="Actions">
                   <div className="row gap-xs wrap">
-                    {u.pending && (
+                    {u.pending ? (
                       <>
                         <button className="btn-primary" onClick={()=>approve(u)}>Approve</button>
                         <button className="btn-ghost" onClick={()=>reject(u)}>Reject</button>
                       </>
-                    )}
-                    {!u.pending && (
+                    ) : (
                       <>
                         {u.role !== 'recruiter' && <button className="btn-secondary" onClick={()=>assign(u,'recruiter')}>Assign Recruiter</button>}
                         {u.role !== 'student' && <button className="btn-secondary" onClick={()=>assign(u,'student')}>Assign Student</button>}
@@ -88,17 +117,19 @@ export default function AdminRoles() {
               </tr>
             ))}
             {pageItems.length === 0 && (
-              <tr><td colSpan={5} className="empty">No users match filter.</td></tr>
+              <tr>
+                <td colSpan={5} className="admin-empty">No users match filter.</td>
+              </tr>
             )}
           </tbody>
         </table>
-      </div>
+      </section>
 
-      <div className="pagination" role="navigation" aria-label="Pagination">
+      <div className="admin-pagination" role="navigation" aria-label="Pagination">
         <button disabled={page===1} onClick={()=>setPage(p=>p-1)} className="btn-ghost">Prev</button>
         <span className="page-status">Page {page} / {totalPages || 1}</span>
         <button disabled={page===totalPages || totalPages===0} onClick={()=>setPage(p=>p+1)} className="btn-ghost">Next</button>
       </div>
-    </div>
+    </AdminConsole>
   );
 }

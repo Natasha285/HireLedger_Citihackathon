@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import '../styles/pages/AdminAudit.css';
+import { AdminConsole } from '../components/layout/AdminConsole.jsx';
 
 /*
   AdminAudit Page
@@ -27,6 +28,40 @@ export default function AdminAudit() {
 
   const filtered = useMemo(()=> LOGS.filter(l => (!actionFilter || l.action === actionFilter) && (!resourceFilter || l.resource === resourceFilter)), [actionFilter, resourceFilter]);
 
+  const metrics = useMemo(() => {
+    const total = LOGS.length;
+    const last24 = LOGS.filter(l => l.ts >= Date.now() - 86_400_000).length;
+    const uniqueActors = new Set(LOGS.map(l => l.actor)).size;
+    const critical = LOGS.filter(l => ['delete-job','revoke-role'].includes(l.action)).length;
+    return [
+      { label: 'Total Events', value: total, delta: `${last24} in last 24h` },
+      { label: 'Unique Actors', value: uniqueActors, delta: 'Active user footprint' },
+      { label: 'Critical Actions', value: critical, delta: 'Monitor high-risk activity', tone: critical ? 'alert' : undefined },
+      { label: 'Exports', value: 'CSV', delta: 'Manual trigger' }
+    ];
+  }, []);
+
+  const toolbar = (
+    <>
+      <label className="small">Action
+        <select value={actionFilter} onChange={e=>setActionFilter(e.target.value)}>
+          <option value="">All</option>
+          {ACTIONS.map(a => <option key={a}>{a}</option>)}
+        </select>
+      </label>
+      <label className="small">Resource
+        <select value={resourceFilter} onChange={e=>setResourceFilter(e.target.value)}>
+          <option value="">All</option>
+          <option>job</option>
+          <option>user</option>
+          <option>institution</option>
+          <option>credential</option>
+        </select>
+      </label>
+      <button className="btn-secondary" onClick={exportCsv}>Export</button>
+    </>
+  );
+
   function exportCsv() {
     // Minimal mock export
     const header = 'id,timestamp,actor,action,resource,meta\n';
@@ -40,54 +75,45 @@ export default function AdminAudit() {
   }
 
   return (
-    <div className="admin-audit-page">
-      <header className="surface admin-head">
-        <h1>Audit Logs</h1>
-        <div className="row gap-sm wrap">
-          <label className="small">Action
-            <select value={actionFilter} onChange={e=>setActionFilter(e.target.value)}>
-              <option value="">All</option>
-              {ACTIONS.map(a => <option key={a}>{a}</option>)}
-            </select>
-          </label>
-          <label className="small">Resource
-            <select value={resourceFilter} onChange={e=>setResourceFilter(e.target.value)}>
-              <option value="">All</option>
-              <option>job</option>
-              <option>user</option>
-              <option>institution</option>
-              <option>credential</option>
-            </select>
-          </label>
-          <button className="btn-secondary" onClick={exportCsv}>Export</button>
-        </div>
-      </header>
-
-      <div className="table-wrap" role="region" aria-label="Audit log table">
+    <AdminConsole
+      title="Audit Logs"
+      description="Trace every administrative change with immutable logging and exportable evidence for compliance audits."
+      metrics={metrics}
+      toolbar={toolbar}
+    >
+      <section className="admin-card" role="region" aria-label="Audit log table">
         <table className="admin-table">
           <thead>
             <tr>
-              <th>Time</th>
-              <th>Actor</th>
-              <th>Action</th>
-              <th>Resource</th>
-              <th>Meta</th>
+              <th scope="col">Time</th>
+              <th scope="col">Actor</th>
+              <th scope="col">Action</th>
+              <th scope="col">Resource</th>
+              <th scope="col">Meta</th>
             </tr>
           </thead>
           <tbody>
             {filtered.slice(0,80).map(l => (
               <tr key={l.id}>
-                <td>{new Date(l.ts).toLocaleString()}</td>
-                <td>{l.actor}</td>
-                <td>{l.action}</td>
-                <td>{l.resource}</td>
-                <td>{l.meta}</td>
+                <td data-label="Time">
+                  <div className="cell-primary">{new Date(l.ts).toLocaleString()}</div>
+                </td>
+                <td data-label="Actor">{l.actor}</td>
+                <td data-label="Action">
+                  <span className={`badge ${['delete-job','revoke-role'].includes(l.action) ? 'badge-danger' : 'badge-neutral'}`}>{l.action}</span>
+                </td>
+                <td data-label="Resource">{l.resource}</td>
+                <td data-label="Meta">{l.meta}</td>
               </tr>
             ))}
-            {filtered.length === 0 && <tr><td colSpan={5} className="empty">No logs match filters.</td></tr>}
+            {filtered.length === 0 && (
+              <tr>
+                <td colSpan={5} className="admin-empty">No logs match filters.</td>
+              </tr>
+            )}
           </tbody>
         </table>
-      </div>
-    </div>
+      </section>
+    </AdminConsole>
   );
 }

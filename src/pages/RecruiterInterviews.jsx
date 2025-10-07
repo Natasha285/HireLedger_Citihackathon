@@ -82,7 +82,14 @@ export default function RecruiterInterviews() {
             ))}
             {/* Drop zones (visual columns) */}
             {DAYS.map((_,i)=>(
-              <div key={i} className="drop-col" onDragOver={e=>e.preventDefault()} onDrop={()=>onDragEnd(i+1)} aria-hidden />
+              <div
+                key={i}
+                className="drop-col"
+                style={{ gridColumn: i + 2 }}
+                onDragOver={e=>e.preventDefault()}
+                onDrop={()=>onDragEnd(i+1)}
+                aria-hidden
+              />
             ))}
           </div>
         </div>

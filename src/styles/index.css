@@ -4,6 +4,7 @@
 @import './modules/layout.css';
 @import './modules/components.css';
 @import './modules/utilities.css';
+@import './modules/admin-console.css';
 
 /* Shared feature layers (page-specific CSS now imported per component) */
 @import './features/toasts.css';

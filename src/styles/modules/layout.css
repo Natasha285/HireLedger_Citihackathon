@@ -31,17 +31,31 @@
 	left:0;
 	bottom:0;
 	width:var(--sidebar-width);
-	background:linear-gradient(180deg,rgba(255,255,255,0.96) 0%,rgba(243,244,246,0.94) 35%,rgba(243,244,246,0.92) 100%);
-	border-right:1px solid var(--color-border);
-	padding:1.25rem 1rem 2rem;
+	background:linear-gradient(180deg,#0f172a 0%,#132035 45%,#15263d 100%);
+	border-right:1px solid rgba(15,23,42,0.35);
+	padding:1.5rem 1.25rem 2.5rem;
 	display:flex;
 	flex-direction:column;
-	gap:1rem;
+	gap:1.25rem;
 	overflow-y:auto;
+	color:rgba(255,255,255,0.82);
+	box-shadow:12px 0 28px -22px rgba(15,23,42,0.55);
 	transition:width var(--transition-base), transform var(--transition-base), background var(--transition-base);
 }
-[data-theme='dark'] .sidebar { background:linear-gradient(180deg,rgba(15,23,42,0.95) 0%,rgba(15,23,42,0.92) 40%,rgba(17,24,39,0.9) 100%); }
+[data-theme='dark'] .sidebar { background:linear-gradient(180deg,#0b1220 0%,#0f172a 45%,#0f172a 100%); border-right-color:rgba(148,163,184,0.25); }
 .sidebar.collapsed { width:var(--sidebar-width-collapsed); }
+.sidebar-nav { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.6rem; }
+.sidebar-nav .sidebar-item,
+.sidebar-nav .sidebar-link { position:relative; display:flex; align-items:center; gap:.75rem; padding:.7rem .95rem; border-radius:var(--radius-md); color:rgba(255,255,255,0.7); font-size:.85rem; font-weight:600; letter-spacing:.3px; transition:background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast); }
+.sidebar-nav .sidebar-item .icon,
+.sidebar-nav .sidebar-link .icon { font-size:1.15rem; }
+.sidebar-nav .sidebar-item:hover,
+.sidebar-nav .sidebar-link:hover { color:#fff; background:rgba(59,130,246,0.18); transform:translateX(2px); }
+.sidebar-nav .sidebar-link.active,
+.sidebar-nav .sidebar-item.active { color:#fff; background:var(--color-primary); box-shadow:0 12px 30px -16px rgba(59,130,246,0.55); }
+.sidebar-nav .sidebar-link.active::after { content:""; position:absolute; inset:6px 12px; border-radius:inherit; border:1px solid rgba(255,255,255,0.35); }
+.sidebar.collapsed .sidebar-item .label,
+.sidebar.collapsed .sidebar-link .label { display:none; }
 @media (max-width:960px){
 	.top-nav,
 	.sidebar-collapsed .top-nav { left:0; width:100%; }
