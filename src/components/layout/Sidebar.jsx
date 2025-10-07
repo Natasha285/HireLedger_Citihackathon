@@ -29,7 +29,7 @@ function buildNav(role) {
       { to: '/admin/roles', label: 'Roles', icon: '🧩' },
       { to: '/admin/institutions', label: 'Institutions', icon: '🏛️' },
       { to: '/admin/audit', label: 'Audit Logs', icon: '🗂️' },
-      { to: '/admin/api', label: 'API', icon: '�' },
+  { to: '/admin/api', label: 'API', icon: '🔌' },
       { to: '/settings', label: 'Settings', icon: '⚙️' }
     ];
   }

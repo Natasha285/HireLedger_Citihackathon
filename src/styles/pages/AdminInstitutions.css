@@ -10,15 +10,15 @@
 	gap: 0.75rem;
 	padding: 1.4rem 1.5rem;
 	border-radius: 24px;
-	border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
-	background: radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 60%), var(--color-surface);
-	box-shadow: 0 24px 50px -34px rgba(15, 23, 42, 0.3);
+	border: 1px solid color-mix(in srgb, var(--admin-border) 70%, transparent);
+	background: radial-gradient(circle at top, rgba(30, 64, 175, 0.12), transparent 65%), var(--admin-surface);
+	box-shadow: 0 26px 54px -34px rgba(15, 23, 42, 0.28);
 	transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .inst-card:hover {
 	transform: translateY(-6px);
-	box-shadow: 0 30px 60px -36px rgba(15, 23, 42, 0.38);
+	box-shadow: 0 32px 62px -36px rgba(15, 23, 42, 0.34);
 }
 
 .inst-head-row {
@@ -33,12 +33,13 @@
 	font-size: 1.05rem;
 	font-weight: 700;
 	letter-spacing: -0.01em;
+	color: var(--admin-text-primary);
 }
 
 .inst-domain {
 	margin: 0;
 	font-size: 0.85rem;
-	color: var(--color-text-muted);
+	color: var(--admin-text-secondary);
 }
 
 .inst-meta {
@@ -46,7 +47,7 @@
 	align-items: center;
 	gap: 0.5rem;
 	font-size: 0.82rem;
-	color: var(--color-text-muted);
+	color: var(--admin-text-secondary);
 }
 
 .inst-actions {

@@ -23,7 +23,7 @@ export default function RecruiterDashboard() {
         <h1>Recruiter Dashboard</h1>
         <p className="muted small">High-level overview (static mock data)</p>
       </header>
-      <section className="recruiter-dashboard" aria-label="Key performance indicators">
+      <section className="recruiter-dashboard-grid" aria-label="Key performance indicators">
         {metrics.map(m => (
           <div key={m.key} className="recruiter-kpi-card" role="group" aria-label={m.label}>
             <h3>{m.label}</h3>

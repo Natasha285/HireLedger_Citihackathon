@@ -3,7 +3,112 @@
 .layout-root {
 	display:block;
 	min-height:100dvh;
-	background:linear-gradient(180deg,rgba(243,244,246,0.96) 0%,rgba(243,244,246,0.92) 40%,rgba(243,244,246,0.88) 100%);
+	background:linear-gradient(180deg,color-mix(in srgb,var(--color-bg) 96%,transparent) 0%,color-mix(in srgb,var(--color-bg) 92%,transparent) 40%,color-mix(in srgb,var(--color-bg) 88%,transparent) 100%);
+}
+
+.layout-root.recruiter-theme {
+	--color-bg: var(--recruiter-bg);
+	--color-surface: var(--recruiter-surface);
+	--color-surface-muted: color-mix(in srgb,var(--recruiter-surface) 90%, var(--recruiter-bg) 10%);
+	--color-border: color-mix(in srgb,var(--recruiter-brand-primary) 12%, var(--recruiter-bg));
+	--color-border-strong: color-mix(in srgb,var(--recruiter-brand-primary) 22%, var(--recruiter-bg));
+	--color-heading: var(--recruiter-brand-primary);
+	--color-text: var(--recruiter-text-secondary);
+	--color-text-muted: color-mix(in srgb,var(--recruiter-text-secondary) 70%, #9ca3af 30%);
+	--color-primary: var(--recruiter-btn-primary);
+	--color-primary-hover: var(--recruiter-btn-primary-hover);
+	--color-primary-soft: color-mix(in srgb,var(--recruiter-btn-primary) 18%, #ffffff 82%);
+	--color-primary-fade: color-mix(in srgb,var(--recruiter-btn-primary) 12%, transparent);
+	--color-accent: var(--recruiter-brand-primary);
+	--color-success: var(--recruiter-status-active);
+	--color-warning: var(--recruiter-status-closed);
+	--color-danger: var(--recruiter-alert-error-text);
+	--layout-topnav-bg: var(--recruiter-navbar);
+	--layout-topnav-text: var(--recruiter-brand-primary);
+	--layout-topnav-border: color-mix(in srgb,var(--recruiter-brand-primary) 10%, transparent);
+	--layout-topnav-shadow: 0 18px 42px -26px rgba(15,23,42,0.22);
+	--layout-topnav-button-bg: color-mix(in srgb,#ffffff 90%, var(--recruiter-btn-secondary) 10%);
+	--layout-topnav-button-border: color-mix(in srgb,var(--recruiter-brand-primary) 12%, transparent);
+	--layout-topnav-button-hover: color-mix(in srgb,var(--recruiter-btn-primary) 18%, #ffffff 82%);
+	--layout-topnav-button-text: var(--recruiter-brand-primary);
+	--layout-topnav-profile-bg: color-mix(in srgb,#ffffff 88%, var(--recruiter-btn-secondary) 12%);
+	--layout-topnav-profile-border: color-mix(in srgb,var(--recruiter-brand-primary) 12%, transparent);
+	--layout-topnav-profile-text: var(--recruiter-brand-primary);
+	--layout-topnav-profile-hover-bg: color-mix(in srgb,var(--recruiter-btn-primary) 16%, #ffffff 84%);
+	--layout-topnav-profile-hover-text: var(--recruiter-btn-primary);
+	--layout-topnav-role-muted: color-mix(in srgb,var(--recruiter-text-secondary) 70%, #d1d5db 30%);
+	--layout-sidebar-bg: var(--recruiter-sidebar);
+	--layout-sidebar-bg-muted: color-mix(in srgb,var(--recruiter-sidebar) 90%, rgba(15,23,42,0.2) 10%);
+	--layout-sidebar-bg-gradient: linear-gradient(180deg,var(--recruiter-sidebar) 0%,color-mix(in srgb,var(--recruiter-sidebar) 85%, rgba(15,23,42,0.25) 15%) 55%,color-mix(in srgb,var(--recruiter-sidebar) 92%, rgba(15,23,42,0.4) 8%) 100%);
+	--layout-sidebar-border: color-mix(in srgb,#0f172a 35%, transparent);
+	--layout-sidebar-text: rgba(255,255,255,0.92);
+	--layout-sidebar-text-muted: rgba(255,255,255,0.78);
+	--layout-sidebar-icon: rgba(255,255,255,0.88);
+	--layout-sidebar-hover-bg: rgba(59,130,246,0.32);
+	--layout-sidebar-hover-text: #fff;
+	--layout-sidebar-active-bg: linear-gradient(135deg,var(--recruiter-btn-primary),color-mix(in srgb,var(--recruiter-btn-primary) 70%, var(--recruiter-btn-primary-hover) 30%));
+	--layout-sidebar-active-border: rgba(255,255,255,0.35);
+	--layout-sidebar-active-shadow: 0 18px 38px -22px rgba(59,130,246,0.55);
+	--layout-sidebar-version: rgba(255,255,255,0.65);
+	--layout-sidebar-shadow: 12px 0 28px -22px rgba(15,23,42,0.45);
+	background:linear-gradient(180deg,color-mix(in srgb,var(--recruiter-bg) 94%,#ffffff 6%) 0%,color-mix(in srgb,var(--recruiter-bg) 98%,#ffffff 2%) 55%,var(--recruiter-bg) 100%);
+}
+
+.layout-root.admin-theme {
+	--color-bg: var(--admin-bg);
+	--color-surface: var(--admin-surface);
+	--color-surface-muted: color-mix(in srgb,var(--admin-surface) 92%, var(--admin-bg) 8%);
+	--color-border: var(--admin-card-border);
+	--color-text: var(--admin-text-secondary);
+	--color-text-muted: color-mix(in srgb,var(--admin-text-secondary) 85%, rgba(148,163,184,0.6) 15%);
+	--color-heading: var(--admin-text-primary);
+	--color-primary: var(--admin-primary);
+	--color-primary-hover: var(--admin-primary-hover);
+	--color-primary-soft: color-mix(in srgb,var(--admin-primary) 12%, #ffffff 88%);
+	--color-primary-fade: color-mix(in srgb,var(--admin-primary) 12%, transparent);
+	--color-accent: var(--admin-secondary);
+	--color-success: #16a34a;
+	--color-warning: #f97316;
+	--color-danger: #dc2626;
+	--layout-topnav-bg: var(--admin-navbar-bg);
+	--layout-topnav-text: var(--admin-text-primary);
+	--layout-topnav-border: color-mix(in srgb,var(--admin-border) 80%, transparent);
+	--layout-topnav-shadow: var(--admin-navbar-shadow);
+	--layout-topnav-button-bg: color-mix(in srgb,var(--admin-border) 18%, #ffffff 82%);
+	--layout-topnav-button-border: color-mix(in srgb,var(--admin-border) 70%, transparent);
+	--layout-topnav-button-hover: color-mix(in srgb,var(--admin-primary) 12%, #ffffff 88%);
+	--layout-topnav-button-text: var(--admin-primary);
+	--layout-topnav-profile-bg: rgba(15,23,42,0.04);
+	--layout-topnav-profile-border: color-mix(in srgb,var(--admin-border) 70%, transparent);
+	--layout-topnav-profile-text: var(--admin-text-primary);
+	--layout-topnav-profile-hover-bg: color-mix(in srgb,var(--admin-primary) 12%, #ffffff 88%);
+	--layout-topnav-profile-hover-text: var(--admin-primary);
+	--layout-topnav-role-muted: var(--admin-text-secondary);
+	--layout-sidebar-bg: var(--admin-sidebar-bg);
+	--layout-sidebar-bg-muted: color-mix(in srgb,var(--admin-sidebar-bg) 92%, rgba(15,23,42,0.2) 8%);
+	--layout-sidebar-bg-gradient: var(--admin-sidebar-bg);
+	--layout-sidebar-border: var(--admin-sidebar-border);
+	--layout-sidebar-text: var(--admin-sidebar-text);
+	--layout-sidebar-text-muted: var(--admin-sidebar-text-muted);
+	--layout-sidebar-icon: #ffffff;
+	--layout-sidebar-hover-bg: var(--admin-sidebar-hover-bg);
+	--layout-sidebar-hover-text: #ffffff;
+	--layout-sidebar-active-bg: var(--admin-sidebar-active-bg);
+	--layout-sidebar-active-border: rgba(59,130,246,0.4);
+	--layout-sidebar-active-shadow: var(--admin-sidebar-active-shadow);
+	--layout-sidebar-version: rgba(226,232,240,0.7);
+	--layout-sidebar-shadow: 14px 0 34px -24px rgba(15,23,42,0.5);
+	background:var(--admin-bg);
+}
+
+.layout-root.admin-theme .top-nav .brand-badge {
+	background:linear-gradient(135deg,var(--admin-primary) 0%,var(--admin-secondary) 100%);
+	color:#ffffff;
+}
+
+.layout-root.admin-theme .main,
+.admin-theme-main {
+	background:linear-gradient(180deg,color-mix(in srgb,var(--admin-bg) 96%, #ffffff 4%) 0%, var(--admin-bg) 100%);
 }
 
 .top-nav {
@@ -16,14 +121,109 @@
 	align-items:center;
 	gap:1rem;
 	padding:0 clamp(1.25rem,3vw,2.75rem);
-	border-bottom:1px solid color-mix(in srgb,var(--color-border) 60%,transparent);
-	background:rgba(255,255,255,0.82);
-	backdrop-filter:blur(18px) saturate(160%);
-	box-shadow:0 12px 40px -20px rgba(17,24,39,0.35);
+	border-bottom:1px solid var(--layout-topnav-border);
+	background:var(--layout-topnav-bg);
+	color:var(--layout-topnav-text);
+	box-shadow:var(--layout-topnav-shadow);
 	z-index:70;
 }
+.top-nav .brand {
+	display:flex;
+	align-items:center;
+	gap:.7rem;
+	font-weight:700;
+	font-size:1.05rem;
+	letter-spacing:.3px;
+	color:var(--layout-topnav-text);
+}
+.top-nav .brand-badge {
+	width:32px;
+	height:32px;
+	display:grid;
+	place-items:center;
+	border-radius:10px;
+	background:var(--gradient-brand);
+	color:#fff;
+	font-size:.85rem;
+	font-weight:600;
+	box-shadow:0 8px 16px -8px rgba(37,99,235,0.55);
+}
+.top-nav .nav-search-btn {
+	display:inline-flex;
+	align-items:center;
+	gap:.45rem;
+	padding:.45rem .75rem;
+	border-radius:var(--radius-md);
+	border:1px solid var(--layout-topnav-button-border);
+	background:var(--layout-topnav-button-bg);
+	color:var(--layout-topnav-button-text);
+	font-weight:600;
+	font-size:.75rem;
+	letter-spacing:.4px;
+	transition:background var(--transition-fast), transform var(--transition-fast);
+}
+.top-nav .nav-search-btn:hover {
+	background:var(--layout-topnav-button-hover);
+	transform:translateY(-1px);
+}
+.top-nav .nav-search-btn .hint {
+	font-size:.65rem;
+	color:var(--layout-topnav-role-muted);
+}
+.top-nav .theme-btn {
+	border-radius:999px;
+	width:40px;
+	height:40px;
+	display:grid;
+	place-items:center;
+	border:1px solid var(--layout-topnav-button-border);
+	background:var(--layout-topnav-button-bg);
+	color:var(--layout-topnav-button-text);
+}
+.top-nav .profile-trigger {
+	border-radius:999px;
+	padding:.35rem .55rem;
+	border:1px solid var(--layout-topnav-profile-border);
+	background:var(--layout-topnav-profile-bg);
+	color:var(--layout-topnav-profile-text);
+}
+.top-nav .profile-trigger:hover {
+	background:var(--layout-topnav-profile-hover-bg);
+	color:var(--layout-topnav-profile-hover-text);
+}
+.top-nav .user-stack {
+	display:flex;
+	flex-direction:column;
+	align-items:flex-start;
+	line-height:1.1;
+	font-size:.7rem;
+	margin-left:.45rem;
+}
+.top-nav .user-stack strong { font-size:.85rem; }
+.top-nav .user-stack .role { color:var(--layout-topnav-role-muted); text-transform:capitalize; }
+.top-nav .relative { position:relative; }
+.top-nav .profile-menu {
+	position:absolute;
+	top:calc(100% + .5rem);
+	right:0;
+	background:var(--color-surface);
+	border:1px solid var(--color-border);
+	border-radius:var(--radius-lg);
+	box-shadow:var(--shadow-lg);
+	padding:.45rem;
+	display:flex;
+	flex-direction:column;
+	gap:.25rem;
+	min-width:200px;
+	z-index:90;
+}
+
+.layout-root.recruiter-theme .top-nav .brand-badge {
+	background:linear-gradient(135deg,var(--recruiter-brand-primary) 0%,color-mix(in srgb,var(--recruiter-brand-primary) 60%, var(--recruiter-brand-secondary) 40%) 100%);
+	color:#fff;
+}
 .sidebar-collapsed .top-nav { left:var(--sidebar-width-collapsed); padding-left: clamp(1.1rem,3vw,2.5rem); }
-[data-theme='dark'] .top-nav { background:rgba(17,24,39,0.88); box-shadow:0 18px 40px -18px rgba(0,0,0,0.65); }
+[data-theme='dark'] .top-nav { background:rgba(15,23,42,0.92); box-shadow:0 18px 40px -18px rgba(0,0,0,0.65); }
 
 .sidebar {
 	position:fixed;
@@ -31,29 +231,31 @@
 	left:0;
 	bottom:0;
 	width:var(--sidebar-width);
-	background:linear-gradient(180deg,#0f172a 0%,#132035 45%,#15263d 100%);
-	border-right:1px solid rgba(15,23,42,0.35);
+	background:var(--layout-sidebar-bg-gradient, var(--layout-sidebar-bg));
+	border-right:1px solid var(--layout-sidebar-border);
 	padding:1.5rem 1.25rem 2.5rem;
 	display:flex;
 	flex-direction:column;
 	gap:1.25rem;
 	overflow-y:auto;
-	color:rgba(255,255,255,0.82);
-	box-shadow:12px 0 28px -22px rgba(15,23,42,0.55);
+	color:var(--layout-sidebar-text-muted);
+	box-shadow:var(--layout-sidebar-shadow);
 	transition:width var(--transition-base), transform var(--transition-base), background var(--transition-base);
 }
-[data-theme='dark'] .sidebar { background:linear-gradient(180deg,#0b1220 0%,#0f172a 45%,#0f172a 100%); border-right-color:rgba(148,163,184,0.25); }
 .sidebar.collapsed { width:var(--sidebar-width-collapsed); }
 .sidebar-nav { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.6rem; }
+.sidebar-link { position:relative; border:1px solid transparent; }
+.sidebar-link.active { color:var(--layout-sidebar-text) !important; }
 .sidebar-nav .sidebar-item,
-.sidebar-nav .sidebar-link { position:relative; display:flex; align-items:center; gap:.75rem; padding:.7rem .95rem; border-radius:var(--radius-md); color:rgba(255,255,255,0.7); font-size:.85rem; font-weight:600; letter-spacing:.3px; transition:background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast); }
+.sidebar-nav .sidebar-link { position:relative; display:flex; align-items:center; gap:.75rem; padding:.7rem .95rem; border-radius:var(--radius-md); color:var(--layout-sidebar-text-muted); font-size:.85rem; font-weight:600; letter-spacing:.3px; transition:background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast); }
 .sidebar-nav .sidebar-item .icon,
-.sidebar-nav .sidebar-link .icon { font-size:1.15rem; }
+.sidebar-nav .sidebar-link .icon { font-size:1.15rem; color:var(--layout-sidebar-icon); }
 .sidebar-nav .sidebar-item:hover,
-.sidebar-nav .sidebar-link:hover { color:#fff; background:rgba(59,130,246,0.18); transform:translateX(2px); }
+.sidebar-nav .sidebar-link:hover { color:var(--layout-sidebar-hover-text); background:var(--layout-sidebar-hover-bg); transform:translateX(2px); }
 .sidebar-nav .sidebar-link.active,
-.sidebar-nav .sidebar-item.active { color:#fff; background:var(--color-primary); box-shadow:0 12px 30px -16px rgba(59,130,246,0.55); }
-.sidebar-nav .sidebar-link.active::after { content:""; position:absolute; inset:6px 12px; border-radius:inherit; border:1px solid rgba(255,255,255,0.35); }
+.sidebar-nav .sidebar-item.active { color:var(--layout-sidebar-text); background:var(--layout-sidebar-active-bg); box-shadow:var(--layout-sidebar-active-shadow); }
+.sidebar-nav .sidebar-link.active::after,
+.sidebar-nav .sidebar-item.active::after { content:""; position:absolute; inset:6px 12px; border-radius:inherit; border:1px solid var(--layout-sidebar-active-border); }
 .sidebar.collapsed .sidebar-item .label,
 .sidebar.collapsed .sidebar-link .label { display:none; }
 @media (max-width:960px){
@@ -61,6 +263,12 @@
 	.sidebar-collapsed .top-nav { left:0; width:100%; }
 	.sidebar { transform:translateX(-100%); box-shadow:var(--shadow-lg); }
 	.sidebar.open { transform:translateX(0); }
+	.top-nav .nav-search-btn .hint { display:none; }
+}
+
+@media (max-width:640px){
+	.top-nav { gap:.75rem; padding:0 clamp(1rem,4vw,1.6rem); }
+	.top-nav .brand { font-size:.95rem; }
 }
 
 .sidebar-mobile-open .sidebar { transform:translateX(0) !important; z-index:140; box-shadow:0 0 0 100vmax rgba(15,23,42,0.35); }
@@ -72,6 +280,10 @@
 	padding:2.25rem clamp(1.5rem,3vw,3rem) 3rem;
 	min-height:calc(100dvh - var(--nav-height));
 	transition:margin-left var(--transition-base), padding var(--transition-fast);
+}
+.layout-root.recruiter-theme .main,
+.recruiter-theme-main {
+	background:linear-gradient(180deg,color-mix(in srgb,var(--recruiter-bg) 95%, #ffffff 5%) 0%, var(--recruiter-bg) 100%);
 }
 .sidebar-collapsed .main { margin-left:var(--sidebar-width-collapsed); }
 @media (max-width:960px){

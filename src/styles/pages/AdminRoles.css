@@ -1,9 +1,9 @@
 /* AdminRoles.css */
-.admin-table .cell-primary { font-weight:600; color:var(--color-heading); }
-.admin-table .cell-secondary { font-size:.8rem; color:var(--color-text-muted); }
-.admin-table tr.is-pending { box-shadow:inset 0 1px 0 rgba(239,68,68,0.15); }
-.admin-table tr.is-pending td { background:linear-gradient(90deg,rgba(239,68,68,0.12),rgba(239,68,68,0)); }
-.badge-neutral { background:rgba(148,163,184,0.16); color:#475569; }
+.admin-table .cell-primary { font-weight:600; color:var(--admin-text-primary); }
+.admin-table .cell-secondary { font-size:.8rem; color:var(--admin-text-secondary); }
+.admin-table tr.is-pending { box-shadow:inset 0 1px 0 rgba(220,38,38,0.25); }
+.admin-table tr.is-pending td { background:linear-gradient(90deg, rgba(254,243,199,0.7), rgba(254,243,199,0)); }
+.badge-neutral { background:rgba(148,163,184,0.16); color:var(--admin-text-secondary); }
 
 @media (max-width: 760px){
   .admin-table thead { display:none; }
